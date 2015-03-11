@@ -25,7 +25,12 @@
 			<value>BLACK</value>
 		</list>
 	</property>
+</bean>
+<bean class="hybrid.webapp.FlickerController">
+	<property name="service" ref="service"/>
 </bean> 
-	
+	<bean id="service" class="hybrid.webapp.service.FlickerService" />
+
+
 
 </beans>

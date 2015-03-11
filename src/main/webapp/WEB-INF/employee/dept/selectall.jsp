@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib prefix ="c" uri ="http://java.sun.com/jsp/jstl/core" %>
+	trimDirectiveWhitespaces="true" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,13 +8,23 @@
 <title>selectall.jsp</title>
 </head>
 <body>
-<hr>
-<select>	
-	<c:forEach var="tzs" items="${requestScope.tzs }">
-		<option>${pageScope.tzs}</option>
-	</c:forEach>
-</select>
-<hr>
+	<hr>
 
+	<c:set var="col" value="5"/>
+
+		<table border="1" style="border-collapse: collapse">
+			<c:forEach var="tzs" items="${requestScope.tzs }" varStatus="status">
+				<c:if test="${status.index % col =0}">
+					<tr>
+				</c:if>
+				<td>${pageScope.tzs }</td>
+				<td>${status.index }</td>
+				<c:if test="${status.index % col =(col-1)}">
+					</tr>
+				</c:if>
+
+			</c:forEach>
+		</table>
+		<hr>
 </body>
 </html>
